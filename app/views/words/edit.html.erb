@@ -1,0 +1,23 @@
+<h1>Editing word</h1>
+ 
+<%= form_for :word, url: word_path(@word), method: :patch do |f| %>
+ 
+ <%= render 'shared/error_messages', object: @word %>
+ 
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+ 
+<% end %>
+ 
+<%= link_to 'Back', words_path %>
