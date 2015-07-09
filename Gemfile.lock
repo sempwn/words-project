@@ -36,6 +36,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    ansi (1.5.0)
     arel (6.0.0)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
@@ -80,10 +81,11 @@ GEM
     mini_portile (0.6.2)
     minitest (5.7.0)
     multi_json (1.11.2)
-    mysql2 (0.3.18)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
+    ps (0.0.8)
+      ansi
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -159,7 +161,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.0)
   jquery-rails
-  mysql2
+  ps
   rails (= 4.2.1)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
