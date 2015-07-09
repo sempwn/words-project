@@ -19,7 +19,7 @@
         <ul class="nav nav-pills pull-right">
           <li><a href="/">Home</a></li>
           <li><a href="/words">Words</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href="/contact/index">Contact</a></li>
           	<% if admin_signed_in? %>
 			  
 			  <li><%= link_to "Logout", destroy_admin_session_path, method: :delete, :class => 'navbar-link'  %></li>
@@ -64,7 +64,7 @@
 		</div>
 	</div>
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>

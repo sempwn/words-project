@@ -2,7 +2,8 @@ class WordsController < ApplicationController
 	before_action :authenticate_admin!
 	skip_before_action :authenticate_admin!, only: [:index, :show]
 	def index
-		@words = Word.all
+		@words = Word.order('lower(name) ASC').all
+		
 	end
 	def new
 		@word = Word.new
