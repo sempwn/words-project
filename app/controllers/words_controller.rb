@@ -20,6 +20,24 @@ class WordsController < ApplicationController
 	end
 	def show
 		@word = Word.find(params[:id])
+		keywords = @word.key_word_strings
+		
+		@related_word = []
+		Word.all.each do |word|
+			if not word.name == @word.name
+				index = (keywords & word.key_word_strings).count
+				@related_word = @related_word.append({name: word.name, size: index, url: word_path(word)})
+			end
+
+		end
+		@related_word = @related_word.sort_by{ |a| a[:index] }.reverse.first(10)
+		@related_word_json = {name: "flare", children: @related_word}
+		respond_to do |format|
+  			format.html #show.html
+  			format.json { render json: @related_word_json }
+		end
+		
+
 	end
 
 	def edit
