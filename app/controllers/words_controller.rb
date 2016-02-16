@@ -3,6 +3,7 @@ class WordsController < ApplicationController
 	skip_before_action :authenticate_admin!, only: [:index, :show]
 	def index
 		@words = Word.order('lower(name) ASC').all
+
 		
 	end
 	def new
@@ -23,10 +24,12 @@ class WordsController < ApplicationController
 		keywords = @word.key_word_strings
 		
 		@related_word = []
+		@csv = []
 		Word.all.each do |word|
 			if not word.name == @word.name
 				index = (keywords & word.key_word_strings).count
 				@related_word = @related_word.append({name: word.name, size: index, url: word_path(word)})
+				@csv = @csv.append({name: word.name, count: index, url: word_path( word, :format => :json ), desc: word.description})
 			end
 
 		end
@@ -34,7 +37,7 @@ class WordsController < ApplicationController
 		@related_word_json = {name: "flare", children: @related_word}
 		respond_to do |format|
   			format.html #show.html
-  			format.json { render json: @related_word_json }
+  			format.json { render json: @csv }
 		end
 		
 
